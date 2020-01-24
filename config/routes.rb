@@ -7,11 +7,15 @@ Rails.application.routes.draw do
     # get "/contact_url" => "contacts#contact_action"
 
 #make first route, method, view for index (all contacts) - done
-# make next route, method, view for show (individual contacts)
+# make next route, method, view for show (individual contacts) - done
+# make
 
 
     get "/contacts" => "contacts#index"
     get "/contacts/:id" => "contacts#show"
+    post "/contacts" => "contacts#create"
+    patch "contacts/:id" => "contacts#update"
+    delete "contacts/:id" => "contacts#destroy"
 
 
   end
