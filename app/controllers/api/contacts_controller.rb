@@ -8,6 +8,20 @@ class Api::ContactsController < ApplicationController
   # end
   def index
     @contacts = Contact.all
+
+    #search any contact with specific first name
+    #contact 
+
+    if params[:select]
+      @contacts = @contacts.where("first_name iLIKE ? OR last_name iLIKE ? or middle_name iLIKE ? or email iLIKE ?", "#{params[:select]}, #{params[:select]}, #{params[:select]}, #{params[:select]}")
+    end
+
+# default option
+@contacts = @contact.order(:id)
+
+    
+
+
     render "index.json.jb"
   end
 
