@@ -7,7 +7,8 @@ class Api::ContactsController < ApplicationController
     
   # end
   def index
-    @contacts = Contact.all
+
+    @contacts = current_user.contacts
 
     #search any contact with specific first name
     #contact 
@@ -17,7 +18,7 @@ class Api::ContactsController < ApplicationController
     end
 
 # default option
-@contacts = @contact.order(:id)
+    # @contacts = @contact.order(:id)
 
     
 
@@ -33,17 +34,18 @@ class Api::ContactsController < ApplicationController
 
   def create
 
-    coordinates = Geocoder.coordinates(params[:address])
+    # coordinates = Geocoder.coordinates(params[:address])
 
     @contact = Contact.new(
       first_name: params["first_name"],
       middle_name: params["middle_name"],
       last_name: params["last_name"],
-      latitude: coordinates[0],
-      longitude: coordinates[1],
+      # latitude: coordinates[0],
+      # longitude: coordinates[1],
       email: params["email"],
       phone_number: params["phone_number"],
-      bio: params["bio"]
+      bio: params["bio"],
+      user_id: current_user.id
       )
 
 

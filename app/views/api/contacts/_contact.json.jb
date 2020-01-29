@@ -12,6 +12,7 @@
   formatted: {
     friendly_updated_at: contact.friendly_updated_at,
     full_name: contact.full_name,
-    japan_phone_number: contact.japan_phone_prefix
-  }
+    japan_phone_number: contact.japan_phone_prefix,
+  },
+  belongs_to: contact.user.name
 }
